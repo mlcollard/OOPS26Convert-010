@@ -19,12 +19,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    // @concerns input format, argv, std::string, text[out]
+    std::string text(argv[2]);
+
     // convert the string according to the option
-    // @concerns input format, argv, std::string
+    // @concerns input format, argv
     // @concerns std::string_view, "--upper", "--lower"
     // @concerns std::toupper(), std::tolower(), iteration
-    // @concerns error handling, std::cerr, text[out]
-    std::string text(argv[2]);
+    // @concerns error handling, std::cerr, text
     if (std::string_view(argv[1]) == "--upper") {
 
         for (auto pc = text.begin(); pc != text.end(); ++pc)

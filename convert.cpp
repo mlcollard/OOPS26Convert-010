@@ -9,6 +9,7 @@
 #include <string>
 #include <string_view>
 #include <cctype>
+#include <algorithm>
 
 // convert to upper case
 // @concerns std::toupper(), toUpper[out]
@@ -41,17 +42,15 @@ int main(int argc, char* argv[]) {
 
     // convert the string according to the option
     // @concerns "--upper", "--lower"
-    // @concerns toUpper(), toLower(), iteration
+    // @concerns toUpper(), toLower(), std::for_each
     // @concerns error handling, std::cerr, text
     if (option == "--upper") {
 
-        for (auto pc = text.begin(); pc != text.end(); ++pc)
-            toUpper(*pc);
+        std::for_each(text.begin(), text.end(), toUpper);
 
     } else if (option == "--lower") {
 
-        for (auto pc = text.begin(); pc != text.end(); ++pc)
-            toLower(*pc);
+        std::for_each(text.begin(), text.end(), toLower);
 
     } else {
 
